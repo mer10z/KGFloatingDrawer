@@ -15,7 +15,7 @@ open class KGDrawerView: UIView {
     let kKGDefaultViewContainerWidth: CGFloat = 280.0
 
     // MARK: Initialization
-    required public init?(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -212,18 +212,17 @@ open class KGDrawerView: UIView {
             return _shouldRadiusCenterViewController
         }
         set {
-            if let view = self.centerViewContainer.subviews.first {
-                if (newValue) {
-                    view.layer.borderColor   = UIColor(white: 1.0, alpha: 0.15).cgColor
-                    view.layer.borderWidth   = 1.0
-                    view.layer.masksToBounds = true
-                    view.layer.cornerRadius  = kKGCenterViewContainerCornerRadius
-                } else {
-                    view.layer.borderColor   = UIColor.clear.cgColor
-                    view.layer.borderWidth   = 0.0
-                    view.layer.masksToBounds = false
-                    view.layer.cornerRadius  = 0.0
-                }
+            let view = self.centerViewContainer.subviews.first
+            if (newValue) {
+                view?.layer.borderColor   = UIColor(white: 1.0, alpha: 0.15).cgColor
+                view?.layer.borderWidth   = 1.0
+                view?.layer.masksToBounds = true
+                view?.layer.cornerRadius  = kKGCenterViewContainerCornerRadius
+            } else {
+                view?.layer.borderColor   = UIColor.clear.cgColor
+                view?.layer.borderWidth   = 0.0
+                view?.layer.masksToBounds = false
+                view?.layer.cornerRadius  = 0.0
             }
             _shouldRadiusCenterViewController = newValue
         }

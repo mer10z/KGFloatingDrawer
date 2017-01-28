@@ -45,7 +45,7 @@ open class KGDrawerSpringAnimator: NSObject {
 
 extension KGDrawerSpringAnimator: KGDrawerAnimating {
     
-    public func openDrawer(_ side: KGDrawerSide, drawerView: UIView, centerView: UIView, animated: Bool, complete:  @escaping (Bool) -> Void) {
+    public func openDrawer(_ side: KGDrawerSide, drawerView: UIView, centerView: UIView, animated: Bool, complete: @escaping (_ finished: Bool) -> Void) {
         if (animated) {
             UIView.animate(withDuration: animationDuration,
                 delay: animationDelay,
@@ -61,7 +61,7 @@ extension KGDrawerSpringAnimator: KGDrawerAnimating {
         }
     }
     
-    public func dismissDrawer(_ side: KGDrawerSide, drawerView: UIView, centerView: UIView, animated: Bool, complete: @escaping (Bool) -> Void) {
+    public func dismissDrawer(_ side: KGDrawerSide, drawerView: UIView, centerView: UIView, animated: Bool, complete: @escaping (_ finished: Bool) -> Void) {
         if (animated) {
             UIView.animate(withDuration: animationDuration,
                 delay: animationDelay,

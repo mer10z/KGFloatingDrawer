@@ -24,8 +24,9 @@ open class KGDrawerViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required public init(coder aDecoder: NSCoder) {
+        //fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)!;
     }
     
     override open func loadView() {
@@ -62,7 +63,7 @@ open class KGDrawerViewController: UIViewController {
     
     // MARK: Interaction
     
-    open func openDrawer(_ side: KGDrawerSide, animated:Bool, complete: @escaping (Bool) -> Void) {
+    open func openDrawer(_ side: KGDrawerSide, animated:Bool, complete: @escaping (_ finished: Bool) -> Void) {
         if currentlyOpenedSide != side {
             if let sideView = drawerView.viewContainerForDrawerSide(side) {
                 let centerView = drawerView.centerViewContainer
@@ -82,7 +83,7 @@ open class KGDrawerViewController: UIViewController {
         currentlyOpenedSide = side
     }
     
-    open func closeDrawer(_ side: KGDrawerSide, animated: Bool, complete: @escaping (Bool) -> Void) {
+    open func closeDrawer(_ side: KGDrawerSide, animated: Bool, complete: @escaping (_ finished: Bool) -> Void) {
         if (currentlyOpenedSide == side && currentlyOpenedSide != .none) {
             if let sideView = drawerView.viewContainerForDrawerSide(side) {
                 let centerView = drawerView.centerViewContainer
